@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.slider {
+	position: relative;
+}
+
+.slider-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.slider-arrow {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.slider-arrow-prev {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin: -11px 0 0 0;
+}
+.slider-arrow-next {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin: -11px 0 0 0;
+}
+
+.slider-dots {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	li {
+		display: inline-block;
+	}
+	button {
+		
+	}
+}
