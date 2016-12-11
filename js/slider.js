@@ -20,9 +20,9 @@
 		var amountItem = $('.slider-list').find('.active').attr('data-index');
 		var amount = parseInt(amountItem)+1;
 		$('.slider-list').css('transform','translateX(-'+ width * amount +'px)');
-		$('.active').removeClass('active').next().addClass('active');
+		$('.js-slider .active').removeClass('active').next().addClass('active');
 
-		if ($('.active').is(':last-child')){
+		if ($('.js-slider .active').is(':last-child')){
 			$(this).prop('disabled',true);
 		} else {
 			$(this).prop('disabled',false);
@@ -35,8 +35,8 @@
 		var amountItem = $('.slider-list').find('.active').attr('data-index');
 		var amount = parseInt(amountItem)-1;
 		$('.slider-list').css('transform','translateX(-'+ width * amount +'px)');
-		$('.active').removeClass('active').prev().addClass('active');
-		if ($('.active').is(':first-child')){
+		$('.js-slider .active').removeClass('active').prev().addClass('active');
+		if ($('.js-slider .active').is(':first-child')){
 			$(this).prop('disabled',true);
 		} else {
 			$(this).prop('disabled',false);
