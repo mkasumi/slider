@@ -3,13 +3,21 @@
 <head>
 	<title>スライダーのサンプル</title>
 	<link rel="stylesheet" type="text/css" href="css/slider.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/slider.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script>
+		$(function(){
+			$('.js-slider').slide();
+		});
+	</script>
+
 </head>
 <body>
 <div class="js-slider slider">
 	<ul class="slider-list">
-		<li class="slider-item"><img src="http://placekitten.com/g/1200/300"></li>
-		<li class="slider-item"><img src="http://placekitten.com/g/1200/300"></li>
-		<li class="slider-item"><img src="http://placekitten.com/g/1200/300"></li>
+		<li class="slider-item"><img src="http://placekitten.com/g/1200/300" class="img-responsive"></li>
+		<li class="slider-item"><img src="http://placekitten.com/g/1400/300" class="img-responsive"></li>
+		<li class="slider-item"><img src="http://placekitten.com/g/1200/300" class="img-responsive"></li>
 	</ul>
 	<ul class="slider-arrow">
 		<li class="slider-arrow-prev"><button type="button">前へ</button></li>

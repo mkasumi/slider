@@ -1,3 +1,11 @@
+.img-responsive
+{
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+}
+
 .slider
 {
     position: relative;
@@ -6,9 +14,16 @@
 .slider-list
 {
     margin: 0;
-    padding: 0; 
+    padding: 0;
 
     list-style: none;
+
+    transition: transform .5s ease;
+}
+
+.slider-item
+{
+    float: left;
 }
 
 .slider-arrow
