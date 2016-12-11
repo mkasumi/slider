@@ -21,6 +21,10 @@
 		console.log('amount' + amount);
 		$('.slider-list').css('transform','translateX(-'+ width * amount +'px)');
 		$('.active').removeClass('active').next().addClass('active');
+
+		if ($('.active').is(':last-child')){
+			$(this).attr('disabled','disabled');
+		}
 		
 	});
 
@@ -30,7 +34,9 @@
 		console.log('amount' + amount);
 		$('.slider-list').css('transform','translateX(-'+ width * amount +'px)');
 		$('.active').removeClass('active').next().addClass('active');
-
+		if ($('.active').is(':first-child')){
+			$(this).attr('disabled','disabled');
+		}
 	});
 
 	};
