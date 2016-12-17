@@ -10,6 +10,7 @@
 // スラィダー
 .slider {
 	position: relative;
+	overflow: hidden;
 }
 
 .slider-list {
@@ -20,6 +21,7 @@
 }
 .slider-item {
 	float: left;
+	width: 100%;
 }
 
 .slider-arrow {
@@ -27,17 +29,41 @@
 	margin: 0;
 	padding: 0;
 }
-.slider-arrow-prev {
-	position: absolute;
-	left: 10px;
-	top: 50%;
-	margin: -11px 0 0 0;
-}
+.slider-arrow-prev,
 .slider-arrow-next {
 	position: absolute;
-	right: 10px;
 	top: 50%;
-	margin: -11px 0 0 0;
+	display: block;
+	margin-top: -20px;
+	button {
+		padding: 0;
+		cursor: pointer;
+		color: transparent;
+		border: none;
+		outline: none;
+		background: transparent;
+	}
+	button[disabled] {
+		opacity: 0.5;
+	}
+	button:before {
+		content: "";
+		display: block;
+		width: 40px;
+		height: 40px;
+	}
+}
+.slider-arrow-prev {
+	left: 10px;
+	button:before {
+		background: url('../images/left-arrow.svg');
+	}
+}
+.slider-arrow-next {
+	right: 10px;
+	button:before {
+		background: url('../images/right-arrow.svg');
+	}
 }
 
 .slider-dots {
@@ -51,8 +77,25 @@
 	text-align: center;
 	li {
 		display: inline-block;
+		margin: 0 5px;
 	}
 	button {
-		
+		padding: 0;
+		cursor: pointer;
+		color: transparent;
+		border: none;
+		outline: none;
+		background: transparent;
+		&:before {
+			content: "";
+			display: block;
+			width: 10px;
+			height: 10px;
+			border-radius:50%;
+			background: rgba(0,0,0,0.5);
+		}
+		&.active {
+			opacity: .5;
+		}
 	}
 }

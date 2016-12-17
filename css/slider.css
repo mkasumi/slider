@@ -9,6 +9,8 @@
 .slider
 {
     position: relative;
+
+    overflow: hidden;
 }
 
 .slider-list
@@ -24,6 +26,8 @@
 .slider-item
 {
     float: left;
+
+    width: 100%;
 }
 
 .slider-arrow
@@ -34,22 +38,60 @@
     list-style: none;
 }
 
-.slider-arrow-prev
-{
-    position: absolute;
-    top: 50%;
-    left: 10px;
-
-    margin: -11px 0 0 0;
-}
-
+.slider-arrow-prev,
 .slider-arrow-next
 {
     position: absolute;
     top: 50%;
-    right: 10px;
 
-    margin: -11px 0 0 0;
+    display: block;
+
+    margin-top: -20px;
+}
+.slider-arrow-prev button,
+.slider-arrow-next button
+{
+    padding: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slider-arrow-prev button[disabled],
+.slider-arrow-next button[disabled]
+{
+    opacity: .5;
+}
+.slider-arrow-prev button:before,
+.slider-arrow-next button:before
+{
+    display: block;
+
+    width: 40px;
+    height: 40px; 
+
+    content: '';
+}
+
+.slider-arrow-prev
+{
+    left: 10px;
+}
+.slider-arrow-prev button:before
+{
+    background: url('../images/left-arrow.svg');
+}
+
+.slider-arrow-next
+{
+    right: 10px;
+}
+.slider-arrow-next button:before
+{
+    background: url('../images/right-arrow.svg');
 }
 
 .slider-dots
@@ -69,4 +111,33 @@
 .slider-dots li
 {
     display: inline-block;
+
+    margin: 0 5px;
+}
+.slider-dots button
+{
+    padding: 0;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slider-dots button:before
+{
+    display: block;
+
+    width: 10px;
+    height: 10px;
+
+    content: '';
+
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .5);
+}
+.slider-dots button.active
+{
+    opacity: .5;
 }

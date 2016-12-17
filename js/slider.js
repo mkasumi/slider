@@ -12,6 +12,19 @@
 				$('.slider-item.active').removeClass('active').addClass('active');
 			}
 		}
+		var arrowDisable = function(){
+			if ($('.slider-item.active').is(':last-child')){
+				$('.slider-arrow-prev button').prop('disabled',false);
+				$('.slider-arrow-next button').prop('disabled',true);
+			} else if ($('.slider-item.active').is(':first-child')){
+				$('.slider-arrow-next button').prop('disabled',false);
+				$('.slider-arrow-prev button').prop('disabled',true);
+			} else {
+				console.log('middle');
+				$('.slider-arrow-prev button').prop('disabled',false);
+				$('.slider-arrow-next button').prop('disabled',false);
+			}
+		}
 
 		// ドットナビゲーションを追加する
 		$(this).append('<ul class="slider-dots"></ul>');
@@ -25,18 +38,19 @@
 
 		//ドットナビゲーション
 		$('.slider-dots button',this).click(function(){
+			$('.slider-dots button').removeClass('active');
 			$(this).addClass('active');
 
 			var selectedItem = $(this).attr('data-dots-item');
 			$('.slider-item').removeClass('active');
 
-			var $item = $(".slider-item").removeClass("active");
+			var $item = $('.slider-item').removeClass('active');
 			var attr = $('.slider-item').attr('data-index');
 			$('.slider-item')
-			.removeClass("active")
+			.removeClass('active')
 			.each(function(){
 				if($(this).attr("data-index") === selectedItem){
-					$(this).addClass("active")
+					$(this).addClass("active");
 				}
 			});
 
@@ -44,6 +58,7 @@
 			var amount = parseInt(amountItem);
 			var direction = 'none';
 			moveTo(amount,direction);
+			arrowDisable();
 		});
 
 		// 幅の取得
@@ -61,13 +76,7 @@
 			var amount = parseInt(amountItem)+1;
 			var direction = 'next';
 			moveTo(amount,direction);
-
-			if ($('.slider-item.active').is(':last-child')){
-				$(this).prop('disabled',true);
-			} else {
-				$(this).prop('disabled',false);
-			}
-			
+			arrowDisable();
 		});
 
 		// 前へ送る
@@ -77,11 +86,7 @@
 			var amount = parseInt(amountItem)-1;
 			var direction = 'prev';
 			moveTo(amount,direction);
-			if ($('.slider-item.active').is(':first-child')){
-				$(this).prop('disabled',true);
-			} else {
-				$(this).prop('disabled',false);
-			}
+			arrowDisable();
 		});
 
 	};
