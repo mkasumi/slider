@@ -20,7 +20,6 @@
 				$('.slider-arrow-next button').prop('disabled',false);
 				$('.slider-arrow-prev button').prop('disabled',true);
 			} else {
-				console.log('middle');
 				$('.slider-arrow-prev button').prop('disabled',false);
 				$('.slider-arrow-next button').prop('disabled',false);
 			}
