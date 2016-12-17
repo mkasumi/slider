@@ -2,7 +2,6 @@
 	$.fn.slide = function() {
 		var $self = $(this);
 		var $ul = $(".slider-list",this);
-		// var moveDots = $();
 		var moveTo = function(amount,direction){
 			$ul.css('transform','translateX(-'+ width * amount +'px)');
 			if (direction === 'next') {
@@ -13,8 +12,7 @@
 				$('.slider-item.active').removeClass('active').addClass('active');
 			}
 		}
-		
-		console.log($ul);
+
 		// ドットナビゲーションを追加する
 		$(this).append('<ul class="slider-dots"></ul>');
 		var items = this.find('.slider-item').length;
@@ -28,9 +26,10 @@
 		//ドットナビゲーション
 		$('.slider-dots button',this).click(function(){
 			$(this).addClass('active');
-			console.log($(this).attr('data-dots-item'));
+
 			var selectedItem = $(this).attr('data-dots-item');
 			$('.slider-item').removeClass('active');
+
 			var $item = $(".slider-item").removeClass("active");
 			var attr = $('.slider-item').attr('data-index');
 			$('.slider-item')
@@ -40,11 +39,11 @@
 					$(this).addClass("active")
 				}
 			});
+
 			var amountItem = $ul.find('.active').attr('data-index');
 			var amount = parseInt(amountItem);
 			var direction = 'none';
 			moveTo(amount,direction);
-			// $('.slider-item').eq(selectedItem).addClass('active');
 		});
 
 		// 幅の取得
@@ -55,7 +54,7 @@
 
 		$('.slider-item:first-child').addClass('active');
 
-		// 左右に送る
+		// 次に送る
 		$('.slider-arrow-next button').click(function(){
 			$('.slider-arrow-prev button').prop('disabled',false);
 			var amountItem = $ul.find('.active').attr('data-index');
@@ -71,6 +70,7 @@
 			
 		});
 
+		// 前へ送る
 		$('.slider-arrow-prev button').click(function(){
 			$('.slider-arrow-next button').prop('disabled',false);
 			var amountItem = $ul.find('.active').attr('data-index');
