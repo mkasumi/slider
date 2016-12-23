@@ -52,7 +52,7 @@
 		if ( defaults.arrows === 'true') {
 			$(this).append('<ul class="'+ defaults.arrowItem +'"><li class="slider-arrow-prev"><button type="button">前へ</button></li><li class="slider-arrow-next"><button type="button">次へ</button></li></ul>');
 			// 次に送る
-			$('.'+ defaults.arrowItem +'-next button').click(function(){
+			$('.'+ defaults.arrowItem +'-next button',this).click(function(){
 				$('.'+ defaults.arrowItem +'-prev button').prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)+1;
@@ -62,7 +62,7 @@
 			});
 
 			// 前へ送る
-			$('.'+ defaults.arrowItem +'-prev button').click(function(){
+			$('.'+ defaults.arrowItem +'-prev button',this).click(function(){
 				$('.'+ defaults.arrowItem +'-next button').prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)-1;
