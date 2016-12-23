@@ -51,10 +51,11 @@
 		$('.' + option.sliderItem,this).width(width);
 		$('.' + option.slider,this).width(itemsWidth);
 
-		$('.' + option.sliderItem +':first-child').addClass('active');
+		$('.' + option.sliderItem +':first-child', $self).addClass('active');
 
 		if ( option.arrows === 'true') {
 			$(this).append('<ul class="'+ option.arrowItem +'"><li class="slider-arrow-prev"><button type="button">前へ</button></li><li class="slider-arrow-next"><button type="button">次へ</button></li></ul>');
+			$('.' + option.arrowItem +'-prev button', $self).prop('disabled',true);
 			// 次に送る
 			$('.'+ option.arrowItem +'-next button',this).click(function(){
 				$('.'+ option.arrowItem +'-prev button', $self).prop('disabled',false);
