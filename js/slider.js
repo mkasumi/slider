@@ -9,6 +9,7 @@
 
 		var $self = $(this);
 		var $ul = $(defaults.slider,this);
+		var items = this.find('.slider-item').length;
 		var moveTo = function(amount,direction){
 			$ul.css('transform','translateX(-'+ width * amount +'px)');
 			if (direction === 'next') {
@@ -32,42 +33,10 @@
 			}
 		}
 
-		var items = this.find('.slider-item').length;
-
 		// データ属性で何番目か取得する
 		$('.slider-item',this).each(function(i){
 			$(this).attr('data-index',i);
-			$('.slider-dots').append('<li><button type="button" data-dots-item="'+i+'">'+i+'</button></li>');
 		});
-
-		//ドットナビゲーション
-		if ( defaults.dots === 'true') {
-			// ドットナビゲーションを追加する
-			$(this).append('<ul class="slider-dots"></ul>');
-			$('.slider-dots button',this).click(function(){
-				$('.slider-dots button').removeClass('active');
-				$(this).addClass('active');
-
-				var selectedItem = $(this).attr('data-dots-item');
-				$('.slider-item').removeClass('active');
-
-				var $item = $('.slider-item').removeClass('active');
-				var attr = $('.slider-item').attr('data-index');
-				$('.slider-item')
-				.removeClass('active')
-				.each(function(){
-					if($(this).attr("data-index") === selectedItem){
-						$(this).addClass("active");
-					}
-				});
-
-				var amountItem = $ul.find('.active').attr('data-index');
-				var amount = parseInt(amountItem);
-				var direction = 'none';
-				moveTo(amount,direction);
-				arrowDisable();
-			});
-		}
 
 		// 幅の取得
 		var width = this.children().width();
@@ -99,6 +68,40 @@
 				arrowDisable();
 			});
 		}
+
+		//ドットナビゲーション
+		if ( defaults.dots === 'true') {
+			// ドットナビゲーションを追加する
+			$(this).append('<ul class="slider-dots"></ul>');
+			// データ属性で何番目か取得する
+			$('.slider-item',this).each(function(i){
+				$('.slider-dots').append('<li><button type="button" data-dots-item="'+i+'">'+i+'</button></li>');
+			});
+			$('.slider-dots button',this).click(function(){
+				$('.slider-dots button').removeClass('active');
+				$(this).addClass('active');
+
+				var selectedItem = $(this).attr('data-dots-item');
+				$('.slider-item').removeClass('active');
+
+				var $item = $('.slider-item').removeClass('active');
+				var attr = $('.slider-item').attr('data-index');
+				$('.slider-item')
+				.removeClass('active')
+				.each(function(){
+					if($(this).attr("data-index") === selectedItem){
+						$(this).addClass("active");
+					}
+				});
+
+				var amountItem = $ul.find('.active').attr('data-index');
+				var amount = parseInt(amountItem);
+				var direction = 'none';
+				moveTo(amount,direction);
+				arrowDisable();
+			});
+		}
+
 
 		return(this);
 
