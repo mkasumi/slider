@@ -28,10 +28,10 @@
 			}
 		}
 		var arrowDisable = function(){
-			if ($('.' + option.sliderItem +'.active').is(':last-child')){
+			if ($('.' + option.sliderItem +'.active',$self).is(':last-child')){
 				$('.'+ option.arrowItem +'-prev button',$self).prop('disabled',false);
 				$('.'+ option.arrowItem +'-next button',$self).prop('disabled',true);
-			} else if ($('.' + option.sliderItem +'.active').is(':first-child')){
+			} else if ($('.' + option.sliderItem +'.active',$self).is(':first-child')){
 				$('.'+ option.arrowItem +'-next button',$self).prop('disabled',false);
 				$('.'+ option.arrowItem +'-prev button',$self).prop('disabled',true);
 			} else {
@@ -57,7 +57,7 @@
 			$(this).append('<ul class="'+ option.arrowItem +'"><li class="slider-arrow-prev"><button type="button">前へ</button></li><li class="slider-arrow-next"><button type="button">次へ</button></li></ul>');
 			// 次に送る
 			$('.'+ option.arrowItem +'-next button',this).click(function(){
-				$('.'+ option.arrowItem +'-prev button').prop('disabled',false);
+				$('.'+ option.arrowItem +'-prev button', $self).prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)+1;
 				var direction = 'next';
@@ -67,7 +67,7 @@
 
 			// 前へ送る
 			$('.'+ option.arrowItem +'-prev button',this).click(function(){
-				$('.'+ option.arrowItem +'-next button').prop('disabled',false);
+				$('.'+ option.arrowItem +'-next button', $self).prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)-1;
 				var direction = 'prev';
