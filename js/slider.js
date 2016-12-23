@@ -78,7 +78,7 @@
 			$(this).append('<ul class="'+ defaults.dotsItem +'"></ul>');
 			// データ属性で何番目か取得する
 			$('.' + defaults.sliderItem,this).each(function(i){
-				$('.' +defaults.dotsItem).append('<li><button type="button" data-dots-item="'+i+'">'+i+'</button></li>');
+				$('.' +defaults.dotsItem,$self).append('<li><button type="button" data-dots-item="'+i+'">'+i+'</button></li>');
 			});
 			$('.' +defaults.dotsItem + ' button',this).click(function(){
 				$('.' +defaults.dotsItem + ' button').removeClass('active');
