@@ -25,14 +25,14 @@
 		}
 		var arrowDisable = function(){
 			if ($('.' + defaults.sliderItem +'.active').is(':last-child')){
-				$('.'+ defaults.arrowItem +'-prev button').prop('disabled',false);
-				$('.'+ defaults.arrowItem +'-next button').prop('disabled',true);
+				$('.'+ defaults.arrowItem +'-prev button',$self).prop('disabled',false);
+				$('.'+ defaults.arrowItem +'-next button',$self).prop('disabled',true);
 			} else if ($('.' + defaults.sliderItem +'.active').is(':first-child')){
-				$('.'+ defaults.arrowItem +'-next button').prop('disabled',false);
-				$('.'+ defaults.arrowItem +'-prev button').prop('disabled',true);
+				$('.'+ defaults.arrowItem +'-next button',$self).prop('disabled',false);
+				$('.'+ defaults.arrowItem +'-prev button',$self).prop('disabled',true);
 			} else {
-				$('.'+ defaults.arrowItem +'-prev button').prop('disabled',false);
-				$('.'+ defaults.arrowItem +'-next button').prop('disabled',false);
+				$('.'+ defaults.arrowItem +'-prev button',$self).prop('disabled',false);
+				$('.'+ defaults.arrowItem +'-next button',$self).prop('disabled',false);
 			}
 		}
 
