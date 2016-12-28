@@ -130,7 +130,6 @@
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem);
 				moveTo(amount,'none');
-				// $ul.removeClass('slider-pause');
 			}, option.throttleTime);
 			afterTimer = setTimeout(function() {
 				$ul.css('transition','');
