@@ -7,7 +7,8 @@
 			dotsItem: 'slider-dots',
 			arrowItem: 'slider-arrow',
 			dots: 'true',
-			arrows: 'true'
+			arrows: 'true',
+			throttleTime: 200
 		};
 
 		var option = $.extend({}, defaults, option);
@@ -113,6 +114,28 @@
 			});
 		}
 
+		var timer = false,
+			afterTimer = false;
+		$(window).resize(function(){
+			if (timer !== false) {
+				clearTimeout(timer);
+				clearTimeout(afterTimer);
+			}
+			timer = setTimeout(function() {
+				$ul.css('transition','none');
+				width = $self.width();
+				itemsWidth = items * width;
+				$('.' + option.sliderItem,$self).width(width);
+				$('.' + option.slider,$self).width(itemsWidth);
+				var amountItem = $ul.find('.active').attr('data-index');
+				var amount = parseInt(amountItem);
+				moveTo(amount,'none');
+				// $ul.removeClass('slider-pause');
+			}, option.throttleTime);
+			afterTimer = setTimeout(function() {
+				$ul.css('transition','');
+			}, option.throttleTime + 1);
+		});
 
 		return(this);
 
