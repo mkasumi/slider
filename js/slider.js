@@ -40,6 +40,41 @@
 				$('.'+ option.arrowItem +'-next button',$self).prop('disabled',false);
 			}
 		}
+		var direction = '';
+		var startX = 0;
+		var swipe = function(action,event){
+			console.log('action ' + action);
+			
+			if(action === 'start') {
+				startX = event.touches[0].pageX;
+				console.log('startX'+startX);
+			} else if (action === 'move') {
+				var endX = event.touches[0].pageX;
+				console.log('startX' + startX);
+				console.log('endX' + endX);
+				var diffX = Math.round(startX - endX);
+				$self.data('diffX',diffX);
+				var absX = Math.abs(diffX);
+				console.log('diffX' + diffX);
+				if (diffX > 0) {
+					direction = 'left';
+					console.log('if left');
+					$self.data('direction',diffX);
+				} else if (diffX < 0){
+					direction = 'right';
+					console.log('if right');
+				}
+
+			}
+		}
+		var swipeEnd = function(){
+			console.log('direction' + direction);
+			if (direction == 'right'){
+				alert('右だよ');
+			} else if (direction === 'left'){
+				alert('左だよ');
+			}
+		}
 
 		// データ属性で何番目か取得する
 		$('.' + option.sliderItem,this).each(function(i){
@@ -113,6 +148,22 @@
 				arrowDisable();
 			});
 		}
+
+		$ul.get(0).addEventListener('touchstart', function(e){
+			swipe('start',e);
+		});
+
+		$ul.get(0).addEventListener('touchmove', function(e) {
+			// swipe('move',e);
+			console.log('action move');
+		});
+
+		$ul.get(0).addEventListener('touchend', function(e) {
+			// swipe('end',e);
+			console.log('action end');
+			swipeEnd();
+		});
+
 
 		var timer = false,
 			afterTimer = false;
