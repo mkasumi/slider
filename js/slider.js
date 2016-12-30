@@ -43,38 +43,37 @@
 		var direction = '';
 		var startX = 0;
 		var swipe = function(action,event){
-			console.log('action ' + action);
-			
 			if(action === 'start') {
+				console.log('start');
 				startX = event.touches[0].pageX;
-				console.log('startX'+startX);
 			} else if (action === 'move') {
+				console.log('move');
 				var endX = event.touches[0].pageX;
-				console.log('startX' + startX);
-				console.log('endX' + endX);
 				var diffX = Math.round(startX - endX);
 				$self.data('diffX',diffX);
 				var absX = Math.abs(diffX);
-				console.log('diffX' + diffX);
 				if (diffX > 0) {
-					direction = 'left';
-					console.log('if left');
+					direction = 'next';
 					$self.data('direction',diffX);
 				} else if (diffX < 0){
-					direction = 'right';
-					console.log('if right');
+					direction = 'prev';
 				}
-
 			}
 		}
 		var swipeEnd = function(){
-			console.log('direction' + direction);
-			if (direction == 'right'){
-				alert('右だよ');
-			} else if (direction === 'left'){
-				alert('左だよ');
+			if (direction == 'prev'){
+				var amountItem = $ul.find('.active').attr('data-index');
+				var amount = parseInt(amountItem)-1;
+				moveTo(amount,'prev');
+			} else if (direction === 'next'){
+				var amountItem = $ul.find('.active').attr('data-index');
+				var amount = parseInt(amountItem)+1;
+				moveTo(amount,'next');
+				arrowDisable();
 			}
 		}
+
+
 
 		// データ属性で何番目か取得する
 		$('.' + option.sliderItem,this).each(function(i){
@@ -149,21 +148,17 @@
 			});
 		}
 
-		$ul.get(0).addEventListener('touchstart', function(e){
+		document.addEventListener('touchstart', function(e){
 			swipe('start',e);
+		})
+
+		document.addEventListener('touchmove', function(e) {
+			swipe('move',e);
 		});
 
-		$ul.get(0).addEventListener('touchmove', function(e) {
-			// swipe('move',e);
-			console.log('action move');
-		});
-
-		$ul.get(0).addEventListener('touchend', function(e) {
-			// swipe('end',e);
-			console.log('action end');
+		document.addEventListener('touchend', function(e) {
 			swipeEnd();
-		});
-
+		})
 
 		var timer = false,
 			afterTimer = false;
