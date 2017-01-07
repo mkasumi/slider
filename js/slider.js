@@ -49,16 +49,16 @@
 		var startX = 0;
 		var swipe = function(action,event){
 			if(action === 'start') {
-				if(event.pageX) {
-					startX = event.pageX;
-				} else if (event.originalEvent.touches[0].pageX){
+				if (event.originalEvent.touches[0].pageX) {
 					startX = event.originalEvent.touches[0].pageX;
+				} else if(event.pageX){
+					startX = event.pageX;
 				}
 			} else if (action === 'move') {
-				if(event.pageX) {
-					var endX = event.pageX;
-				} else if (event.originalEvent.touches[0].pageX){
+				if(event.originalEvent.touches[0].pageX) {
 					var endX = event.originalEvent.touches[0].pageX;
+				} else if(event.pageX){
+					var endX = event.pageX;
 				}
 				var diffX = Math.round(startX - endX);
 				$self.data('diffX',diffX);
