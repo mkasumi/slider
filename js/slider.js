@@ -44,9 +44,17 @@
 		var startX = 0;
 		var swipe = function(action,event){
 			if(action === 'start') {
-				startX = event.originalEvent.touches[0].pageX;
+				if(event.pageX) {
+					startX = event.pageX;
+				} else if (event.originalEvent.touches[0].pageX){
+					startX = event.originalEvent.touches[0].pageX;
+				}
 			} else if (action === 'move') {
-				var endX = event.originalEvent.touches[0].pageX;
+				if(event.pageX) {
+					var endX = event.pageX;
+				} else if (event.originalEvent.touches[0].pageX){
+					var endX = event.originalEvent.touches[0].pageX;
+				}
 				var diffX = Math.round(startX - endX);
 				$self.data('diffX',diffX);
 				var absX = Math.abs(diffX);
@@ -71,8 +79,6 @@
 				arrowDisable();
 			}
 		}
-
-
 
 		// データ属性で何番目か取得する
 		$('.' + option.sliderItem,this).each(function(i){
@@ -159,6 +165,23 @@
 		$ul.on('touchend',function(e){
 			swipeEnd();
 		});
+
+		$ul.on('mousedown',function(e){
+			e.preventDefault(); // img要素でもmouseupを有効にする
+			swipe('start',e);
+			$self.on('mousemove',function(e){
+				swipe('move',e);
+			});
+			$self.on('mouseleave',function(e){
+				swipeEnd();
+				$self.off('mousemove mouseup mouseleave');
+			});
+			$self.on('mouseup',function(e){
+				swipeEnd();
+				$self.off('mousemove mouseup mouseleave');
+			});
+		});
+
 
 		var timer = false,
 			afterTimer = false;
