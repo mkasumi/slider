@@ -17,6 +17,11 @@
 		var $ul = $('.' + option.slider,$self);
 		var items = this.find('.' + option.sliderItem).length;
 		var moveTo = function(amount,direction){
+			if (direction === 'next' && $('.' + option.sliderItem +'.active',$self).is(':last-child')) {
+				return false;
+			} else if (direction === 'prev' && $('.' + option.sliderItem +'.active',$self).is(':first-child')) {
+				return false;
+			}
 			$ul.css('transform','translateX(-'+ width * amount +'px)');
 			if (direction === 'next') {
 				$('.' + option.sliderItem +'.active',$self).removeClass('active').next().addClass('active');
