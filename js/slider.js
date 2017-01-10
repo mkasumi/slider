@@ -49,13 +49,13 @@
 		var startX = 0;
 		var swipe = function(action,event){
 			if(action === 'start') {
-				if (event.originalEvent.touches[0].pageX) {
+				if (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches[0].pageX) {
 					startX = event.originalEvent.touches[0].pageX;
 				} else if(event.pageX){
 					startX = event.pageX;
 				}
 			} else if (action === 'move') {
-				if(event.originalEvent.touches[0].pageX) {
+				if(event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches[0].pageX) {
 					var endX = event.originalEvent.touches[0].pageX;
 				} else if(event.pageX){
 					var endX = event.pageX;
