@@ -39,8 +39,8 @@ $slider_dots: slider-item;
 	margin: 0;
 	padding: 0;
 }
-.slider-arrow-prev,
-.slider-arrow-next {
+.#{$slider_arrow}-prev,
+.#{$slider_arrow}-next {
 	position: absolute;
 	top: 50%;
 	display: block;
@@ -63,13 +63,13 @@ $slider_dots: slider-item;
 		height: 40px;
 	}
 }
-.slider-arrow-prev {
+.#{$slider_arrow}-prev {
 	left: 10px;
 	button:before {
 		background: url('../images/left-arrow.svg');
 	}
 }
-.slider-arrow-next {
+.#{$slider_arrow}-next {
 	right: 10px;
 	button:before {
 		background: url('../images/right-arrow.svg');

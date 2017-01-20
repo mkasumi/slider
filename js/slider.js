@@ -100,7 +100,7 @@
 		$('.' + option.sliderItem +':first-child', $self).addClass('active');
 
 		if ( option.arrows === 'true') {
-			$(this).append('<ul class="'+ option.arrowItem +'"><li class="slider-arrow-prev"><button type="button">前へ</button></li><li class="slider-arrow-next"><button type="button">次へ</button></li></ul>');
+			$(this).append('<ul class="'+ option.arrowItem +'"><li class="'+ option.arrowItem +'-prev"><button type="button">前へ</button></li><li class="'+ option.arrowItem +'-next"><button type="button">次へ</button></li></ul>');
 			$('.' + option.arrowItem +'-prev button', $self).prop('disabled',true);
 			// 次に送る
 			$('.'+ option.arrowItem +'-next button',$self).click(function(){
