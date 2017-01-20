@@ -12,9 +12,10 @@
 		};
 
 		var option = $.extend({}, defaults, option);
-
 		var $self = $(this);
+		$self.children().addClass(option.slider,$self);
 		var $ul = $('.' + option.slider,$self);
+		$ul.children().addClass(option.sliderItem);
 		var items = this.find('.' + option.sliderItem).length;
 		var moveTo = function(amount,direction){
 			if (direction === 'next' && $('.' + option.sliderItem +'.active',$self).is(':last-child')) {
@@ -86,15 +87,15 @@
 		}
 
 		// データ属性で何番目か取得する
-		$('.' + option.sliderItem,this).each(function(i){
+		$('.' + option.sliderItem,$self).each(function(i){
 			$(this).attr('data-index',i);
 		});
 
 		// 幅の取得
-		var width = this.children().width();
+		var width = $ul.children().width();
 		var itemsWidth = items * width;
-		$('.' + option.sliderItem,this).width(width);
-		$('.' + option.slider,this).width(itemsWidth);
+		$('.' + option.sliderItem,$self).width(width);
+		$('.' + option.slider,$self).width(itemsWidth);
 
 		$('.' + option.sliderItem +':first-child', $self).addClass('active');
 
@@ -102,7 +103,7 @@
 			$(this).append('<ul class="'+ option.arrowItem +'"><li class="slider-arrow-prev"><button type="button">前へ</button></li><li class="slider-arrow-next"><button type="button">次へ</button></li></ul>');
 			$('.' + option.arrowItem +'-prev button', $self).prop('disabled',true);
 			// 次に送る
-			$('.'+ option.arrowItem +'-next button',this).click(function(){
+			$('.'+ option.arrowItem +'-next button',$self).click(function(){
 				$('.'+ option.arrowItem +'-prev button', $self).prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)+1;
@@ -112,7 +113,7 @@
 			});
 
 			// 前へ送る
-			$('.'+ option.arrowItem +'-prev button',this).click(function(){
+			$('.'+ option.arrowItem +'-prev button',$self).click(function(){
 				$('.'+ option.arrowItem +'-next button', $self).prop('disabled',false);
 				var amountItem = $ul.find('.active').attr('data-index');
 				var amount = parseInt(amountItem)-1;
