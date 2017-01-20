@@ -1,4 +1,14 @@
 @charset "utf-8";
+
+// クラス属性の設定
+$slider: slider;
+$slider_list: slider-list;
+$slider_item: slider-item;
+$slider_arrow: slider-arrow;
+$slider_dots: slider-item;
+
+
+
 // 共通
 .img-responsive {
 	display: block;
@@ -8,23 +18,23 @@
 
 
 // スラィダー
-.slider {
+.#{$slider} {
 	position: relative;
 	overflow: hidden;
 }
 
-.slider-list {
+.#{$slider_list} {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	transition: transform .5s ease;
 }
-.slider-item2 {
+.#{$slider_item} {
 	float: left;
 	width: 100%;
 }
 
-.slider-arrow {
+.#{$slider_arrow} {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -66,7 +76,7 @@
 	}
 }
 
-.slider-dots {
+.#{$slider_dots} {
 	position: absolute;
 	left: 0;
 	bottom: 0;
