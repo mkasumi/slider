@@ -94,7 +94,7 @@
     background: url('../images/right-arrow.svg');
 }
 
-.slider-item
+.slider-dots
 {
     position: absolute;
     right: 0;
@@ -108,13 +108,13 @@
 
     text-align: center;
 }
-.slider-item li
+.slider-dots li
 {
     display: inline-block;
 
     margin: 0 5px;
 }
-.slider-item button
+.slider-dots button
 {
     padding: 0;
 
@@ -125,7 +125,7 @@
     outline: none;
     background: transparent;
 }
-.slider-item button:before
+.slider-dots button:before
 {
     display: block;
 
@@ -137,7 +137,7 @@
     border-radius: 50%;
     background: rgba(0, 0, 0, .5);
 }
-.slider-item button.active
+.slider-dots button.active
 {
     opacity: .5;
 }
